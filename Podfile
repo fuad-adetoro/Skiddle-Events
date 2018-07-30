@@ -17,4 +17,13 @@ target 'SkiddleEvents' do
   pod 'RealmSwift', '~> 3.0'
   pod 'RxRealm', '~> 0.7'
 
+  # Data Handling 
+  pod 'RxAlamofire'
+  pod 'SwiftyJSON'
+
+  # Location Handling 
+  pod 'RxCoreLocation'
+
+  # Unboxing 
+  pod 'UnboxedAlamofire'
 end

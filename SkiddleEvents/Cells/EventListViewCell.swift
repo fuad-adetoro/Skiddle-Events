@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class EventListViewCell: UITableViewCell {
     @IBOutlet weak var eventImageView: UIImageView!
@@ -18,7 +19,14 @@ class EventListViewCell: UITableViewCell {
     }
     
     func configure(event: Event) {
+        self.titleLabel.text = event.title
         
+        if let smallImageURLString = event.smallImageURL {
+            let smallImageURL = URL(string: smallImageURLString)!
+            eventImageView.kf.setImage(with: smallImageURL)
+        } else {
+            eventImageView.kf.setImage(with: URL(string: event.largeImageURL)!)
+        }
     }
 
 }

@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Unbox
 
 typealias EventLocation = (postCode: String, town: String, address: String, venueName: String, longitude: Double, latitude: Double, venueId: String)
 

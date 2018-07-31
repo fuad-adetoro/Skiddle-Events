@@ -16,6 +16,15 @@ public let apiKey = "4787266f998deabb86c710474f41cc20"
 
 typealias Coordinate = (longitude: Double, latitude: Double)
 
+//fileprivate var internalCache: Observable<[String: Event]> = Observable.of([:])
+
+//fileprivate var internalCache: Variable<[String: Event]> = Variable([:])
+
+/*fileprivate typealias internalCacheType = ([String: Event])
+fileprivate var internalCache: Observable<[internalCacheType]>!*/
+
+fileprivate var internalCache = [String: Event]()
+
 enum SkiddleAPIError: Error {
     case eventNotFound
     case serverFailure
@@ -27,35 +36,12 @@ class SkiddleAPI {
     
     let disposeBag = DisposeBag()
     
-    /*
-    func subscribeForEvents(url: URL, completion: @escaping fetchEventsCompletion) {
-        let request = requestEvent(with: url).retry(3).subscribe(onNext: { (response, value) in
-            if 200 ..< 300 ~= response.statusCode {
-                let json = JSON(value)
-                let resultsJSON = json["results"]
-                
-                let fetchedEvents = self.events(from: resultsJSON)
-                
-                completion(fetchedEvents, nil)
-            } else if response.statusCode == 401 {
-                completion([], SkiddleAPIError.invalidKey)
-            } else if 400 ..< 500 ~= response.statusCode {
-                completion([], SkiddleAPIError.eventNotFound)
-            } else {
-                completion([], SkiddleAPIError.serverFailure)
-            }
-        }, onError: { (error) in
-            completion([], error)
-        })
-        
-        request.disposed(by: disposeBag)
-    }*/
-    
     func events(from json: JSON) -> [Event] {
         var events: [Event] = []
         
         for sectionData in json.array! {
             print("sectioned")
+            
             var appendEvent = true
             
             let event = Event()
@@ -120,6 +106,7 @@ class SkiddleAPI {
         }
         
         print("Events about to return: \(events)")
+        print("Return internalCach: \(internalCache)")
         
         return events
     }
@@ -176,3 +163,39 @@ class SkiddleAPI {
     }
 }
 
+/*extension ObservableType where E == (HTTPURLResponse, Data) {
+    func cache() -> Observable<E> {
+        return self.do(onNext: { (response, data) in
+            if let url = response.url?.absoluteString, 200 ..< 300 ~= response.statusCode {
+                internalCache[url] = data
+            }
+        })
+    }
+}*/
+
+
+/// COMMENT
+
+/*
+ func subscribeForEvents(url: URL, completion: @escaping fetchEventsCompletion) {
+ let request = requestEvent(with: url).retry(3).subscribe(onNext: { (response, value) in
+ if 200 ..< 300 ~= response.statusCode {
+ let json = JSON(value)
+ let resultsJSON = json["results"]
+ 
+ let fetchedEvents = self.events(from: resultsJSON)
+ 
+ completion(fetchedEvents, nil)
+ } else if response.statusCode == 401 {
+ completion([], SkiddleAPIError.invalidKey)
+ } else if 400 ..< 500 ~= response.statusCode {
+ completion([], SkiddleAPIError.eventNotFound)
+ } else {
+ completion([], SkiddleAPIError.serverFailure)
+ }
+ }, onError: { (error) in
+ completion([], error)
+ })
+ 
+ request.disposed(by: disposeBag)
+ }*/

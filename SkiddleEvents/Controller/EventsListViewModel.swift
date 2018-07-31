@@ -30,14 +30,7 @@ struct EventsListViewModel {
             return Observable.just([])
         }
         
-        return RxAlamofire.request(.get, url).flatMap { request in
-            return request.validate(statusCode: 200 ..< 300).rx.json()
-            }.map { value in
-                JSON(value)
-            }.map { json in
-                json["results"]
-            }.map { resultJSON -> [Event] in
-                SkiddleAPI.shared.events(from: resultJSON)
-            }
+        let urlRequest = URLRequest(url: url)
+        return URLSession.shared.rx.event(request: urlRequest).cacheEvents()
     }
 }

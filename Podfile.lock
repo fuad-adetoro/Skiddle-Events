@@ -4,6 +4,7 @@ PODS:
     - RxSwift (~> 4.0)
   - Alamofire (4.6.0)
   - Differentiator (3.0.2)
+  - Kingfisher (4.5.0)
   - "NSObject+Rx (4.2.0)":
     - RxSwift (~> 4.0)
   - Realm (3.0.2):
@@ -32,13 +33,10 @@ PODS:
     - RxSwift (~> 4.0)
   - RxSwift (4.0.0)
   - SwiftyJSON (4.0.0)
-  - Unbox (2.5.0)
-  - UnboxedAlamofire (2.0.4):
-    - Alamofire (~> 4.1)
-    - Unbox (~> 2.0)
 
 DEPENDENCIES:
   - Action (~> 3.4)
+  - Kingfisher
   - "NSObject+Rx (~> 4.1)"
   - RealmSwift (~> 3.0)
   - RxAlamofire
@@ -48,13 +46,13 @@ DEPENDENCIES:
   - RxRealm (~> 0.7)
   - RxSwift (~> 4.0)
   - SwiftyJSON
-  - UnboxedAlamofire
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Action
     - Alamofire
     - Differentiator
+    - Kingfisher
     - "NSObject+Rx"
     - Realm
     - RealmSwift
@@ -65,13 +63,12 @@ SPEC REPOS:
     - RxRealm
     - RxSwift
     - SwiftyJSON
-    - Unbox
-    - UnboxedAlamofire
 
 SPEC CHECKSUMS:
   Action: d60087ebce41b969d1afdad01e2fa1372a82f26e
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   Differentiator: a87be69eba49ec4ab460c7671143ee3a9eececfd
+  Kingfisher: 26ae0473102b77b575da51960c932431e3745407
   "NSObject+Rx": cbbc05e3cb3ad446cdbced3e00e39c9efaf02925
   Realm: 6f23fd1f178a09342eac21bfa7c2bf4312a7a180
   RealmSwift: 695393add1b8f9d5fa75dd16e6355cf3935f71e2
@@ -82,9 +79,7 @@ SPEC CHECKSUMS:
   RxRealm: a6c6c0a07cb61f34209969ca6657734edfdfff30
   RxSwift: fd680d75283beb5e2559486f3c0ff852f0d35334
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
-  Unbox: 30e437e6151a6de16139375fd4e8dd9a664cfbf7
-  UnboxedAlamofire: e803f471553e3aecec711f5d50f80cda6c65feaa
 
-PODFILE CHECKSUM: 2e304942dbf440f99421caddce15c451a02d47b5
+PODFILE CHECKSUM: d966d57bd8b43dcf907ed51cd9822b58bfc80728
 
 COCOAPODS: 1.5.3

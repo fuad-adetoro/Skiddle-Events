@@ -26,6 +26,7 @@
 		06D1AD6F210EBF8900E84B4F /* Scene+viewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D1AD6E210EBF8900E84B4F /* Scene+viewController.swift */; };
 		06D1AD71210EC53500E84B4F /* BindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D1AD70210EC53500E84B4F /* BindableType.swift */; };
 		06D1AD74210F579000E84B4F /* EventListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D1AD73210F579000E84B4F /* EventListViewCell.swift */; };
+		06D1AD76210FF06E00E84B4F /* URLSession+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D1AD75210FF06E00E84B4F /* URLSession+Rx.swift */; };
 		4379948B7074B579B59065C9 /* Pods_SkiddleEvents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D3D38AA73BFB5154DF50EA5 /* Pods_SkiddleEvents.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,7 @@
 		06D1AD6E210EBF8900E84B4F /* Scene+viewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Scene+viewController.swift"; sourceTree = "<group>"; };
 		06D1AD70210EC53500E84B4F /* BindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindableType.swift; sourceTree = "<group>"; };
 		06D1AD73210F579000E84B4F /* EventListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewCell.swift; sourceTree = "<group>"; };
+		06D1AD75210FF06E00E84B4F /* URLSession+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Rx.swift"; sourceTree = "<group>"; };
 		1BB95577262205F7DC7E788C /* Pods-SkiddleEvents.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SkiddleEvents.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SkiddleEvents/Pods-SkiddleEvents.debug.xcconfig"; sourceTree = "<group>"; };
 		4D3D38AA73BFB5154DF50EA5 /* Pods_SkiddleEvents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SkiddleEvents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65053EED63561C70075F2E2A /* Pods-SkiddleEvents.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SkiddleEvents.release.xcconfig"; path = "Pods/Target Support Files/Pods-SkiddleEvents/Pods-SkiddleEvents.release.xcconfig"; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				06D1AD5E210E4DBD00E84B4F /* string+decodeHTMLString.swift */,
+				06D1AD75210FF06E00E84B4F /* URLSession+Rx.swift */,
 			);
 			name = Extensions;
 			path = "New Group";
@@ -266,6 +269,7 @@
 				"${BUILT_PRODUCTS_DIR}/Action/Action.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/NSObject+Rx/NSObject_Rx.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
@@ -276,14 +280,13 @@
 				"${BUILT_PRODUCTS_DIR}/RxRealm/RxRealm.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
-				"${BUILT_PRODUCTS_DIR}/Unbox/Unbox.framework",
-				"${BUILT_PRODUCTS_DIR}/UnboxedAlamofire/UnboxedAlamofire.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Action.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NSObject_Rx.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
@@ -294,8 +297,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRealm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Unbox.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UnboxedAlamofire.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -341,6 +342,7 @@
 				06D1AD74210F579000E84B4F /* EventListViewCell.swift in Sources */,
 				06D1AD6B210EBEA300E84B4F /* SceneTransitionType.swift in Sources */,
 				06352A6F210DF4A60070DB39 /* EventsListTableViewController.swift in Sources */,
+				06D1AD76210FF06E00E84B4F /* URLSession+Rx.swift in Sources */,
 				06352A6D210DF4A60070DB39 /* AppDelegate.swift in Sources */,
 				06352A89210E055D0070DB39 /* Event.swift in Sources */,
 			);

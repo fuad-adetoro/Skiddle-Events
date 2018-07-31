@@ -24,6 +24,6 @@ target 'SkiddleEvents' do
   # Location Handling 
   pod 'RxCoreLocation'
 
-  # Unboxing 
-  pod 'UnboxedAlamofire'
+  # Image handling
+  pod 'Kingfisher'
 end

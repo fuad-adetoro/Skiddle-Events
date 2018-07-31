@@ -23,7 +23,7 @@ class EventsListTableViewController: UITableViewController, BindableType {
         super.viewDidLoad()
         
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 152
+        tableView.estimatedRowHeight = 155
     }
     
     func bindViewModel() {

@@ -25,6 +25,10 @@ class EventListViewCell: UICollectionViewCell {
         super.prepareForReuse()
         
         eventImageView.image = nil
+        titleLabel.text = nil
+        venueLocationLabel.text = nil
+        eventDateLabel.text = nil
+        eventLocationLabel.text = nil
     }
     
     func configure(event: Event) {

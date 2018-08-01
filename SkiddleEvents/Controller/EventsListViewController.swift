@@ -10,6 +10,8 @@ import UIKit
 import RxSwift
 import RxCocoa
 import NSObject_Rx
+import CoreLocation
+import RxCoreLocation
 
 class EventsListViewController: UIViewController, BindableType {
     @IBOutlet weak var collectionView: UICollectionView!
@@ -19,12 +21,16 @@ class EventsListViewController: UIViewController, BindableType {
     var events: [Event] = []
     
     private let coordinate: Coordinate = Coordinate(longitude: 0.084387, latitude: 51.494823)
-    private var skiddleURL: Observable<String> = Observable.of("https://www.skiddle.com/api/v1/events/search/?api_key=\(apiKey)")
+    private var skiddleURL: Variable<String> = Variable("")
     
     private let eventListViewCellId = "EventListViewCell"
     
+    let locationManager = CLLocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        configureLocationManager()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,12 +40,12 @@ class EventsListViewController: UIViewController, BindableType {
     }
     
     func bindViewModel() {
-        viewModel.data.drive(onNext: { (events) in
+        viewModel.data.skip(1).drive(onNext: { (events) in
             self.events = events
             self.collectionView.reloadData()
         }).disposed(by: self.rx.disposeBag)
         
-        skiddleURL.bind(to: viewModel.searchText).disposed(by: self.rx.disposeBag)
+        skiddleURL.asObservable().bind(to: viewModel.searchText).disposed(by: self.rx.disposeBag)
         
         viewModel.data.map { "\($0.count) Events" }.drive(navigationItem.rx.title).disposed(by: self.rx.disposeBag)
     }
@@ -49,6 +55,18 @@ class EventsListViewController: UIViewController, BindableType {
             flowLayout.scrollDirection = .vertical
             flowLayout.minimumLineSpacing = 6
         }
+    }
+    
+    func configureLocationManager() {
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        
+        locationManager.rx.didUpdateLocations.take(1).subscribe(onNext:  { (location) in
+            let locationCoordinate = location.locations[0].coordinate
+            let coordinate = Coordinate(longitude: locationCoordinate.longitude, latitude: locationCoordinate.latitude)
+            
+            self.skiddleURL.value = "https://www.skiddle.com/api/v1/events/search/?api_key=\(apiKey)&longitude=\(coordinate.longitude)&latitude=\(coordinate.latitude)&radius=50&limit=50"
+        }).disposed(by: self.rx.disposeBag)
     }
 }
 

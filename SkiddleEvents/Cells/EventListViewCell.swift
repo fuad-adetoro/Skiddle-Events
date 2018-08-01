@@ -9,24 +9,35 @@
 import UIKit
 import Kingfisher
 
-class EventListViewCell: UITableViewCell {
+class EventListViewCell: UICollectionViewCell {
     @IBOutlet weak var eventImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var venueLocationLabel: UILabel!
+    @IBOutlet weak var eventDateLabel: UILabel!
+    @IBOutlet weak var eventLocationLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
     }
     
-    func configure(event: Event) {
-        self.titleLabel.text = event.title
+    override func prepareForReuse() {
+        super.prepareForReuse()
         
-        if let smallImageURLString = event.smallImageURL {
-            let smallImageURL = URL(string: smallImageURLString)!
-            eventImageView.kf.setImage(with: smallImageURL)
-        } else {
-            eventImageView.kf.setImage(with: URL(string: event.largeImageURL)!)
-        }
+        eventImageView.image = nil
+    }
+    
+    func configure(event: Event) {
+        let title = event.title
+        self.titleLabel.text = "\(title)"
+        
+        eventImageView.kf.setImage(with: URL(string: event.largeImageURL)!)
+        
+        eventLocationLabel.text = event.getFullAddress()
+        
+        venueLocationLabel.text = event.getVenueName()
+        
+        eventDateLabel.text = event.getEventDate()
     }
 
 }

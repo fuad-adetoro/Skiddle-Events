@@ -16,15 +16,6 @@ public let apiKey = "4787266f998deabb86c710474f41cc20"
 
 typealias Coordinate = (longitude: Double, latitude: Double)
 
-//fileprivate var internalCache: Observable<[String: Event]> = Observable.of([:])
-
-//fileprivate var internalCache: Variable<[String: Event]> = Variable([:])
-
-/*fileprivate typealias internalCacheType = ([String: Event])
-fileprivate var internalCache: Observable<[internalCacheType]>!*/
-
-fileprivate var internalCache = [String: Event]()
-
 enum SkiddleAPIError: Error {
     case eventNotFound
     case serverFailure
@@ -40,13 +31,13 @@ class SkiddleAPI {
         var events: [Event] = []
         
         for sectionData in json.array! {
-            print("sectioned")
-            
             var appendEvent = true
             
             let event = Event()
             
-            event.id = sectionData["id"].stringValue
+            let eventID = sectionData["id"].stringValue
+            
+            event.id = eventID
             
             var eventTitle = sectionData["eventname"].stringValue
             eventTitle = eventTitle.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -92,21 +83,17 @@ class SkiddleAPI {
             for eventRef in events {
                 if event.id == eventRef.id {
                     appendEvent = false
-                } else if event.title == eventRef.title, event.startDate == eventRef.startDate, eventRef.endDate == eventRef.endDate {
-                    appendEvent = false
                 } else if event.url == eventRef.url {
+                    appendEvent = false
+                } else if event.title == eventRef.title && event.getEventDate() == eventRef.getEventDate() {
                     appendEvent = false
                 }
             }
             
             if appendEvent {
-                print("Can we append: \(event.id)? \(appendEvent)")
                 events.append(event)
             }
         }
-        
-        print("Events about to return: \(events)")
-        print("Return internalCach: \(internalCache)")
         
         return events
     }
@@ -114,8 +101,8 @@ class SkiddleAPI {
     func locationFromEvent(venueInfo: JSON) -> (canContinue: Bool, eventLocation: EventLocation?) {
         let address = venueInfo["address"].stringValue.decodeHTMLString
         let postcode = venueInfo["postcode"].stringValue.decodeHTMLString
-        let town = venueInfo["postcode"].stringValue.decodeHTMLString
-        let venueName = venueInfo["town"].stringValue.decodeHTMLString
+        let town = venueInfo["town"].stringValue.decodeHTMLString
+        let venueName = venueInfo["name"].stringValue.decodeHTMLString
         let longitudeString = venueInfo["longitude"].stringValue
         let latitudeString = venueInfo["latitude"].stringValue
         let venueId = venueInfo["id"].stringValue

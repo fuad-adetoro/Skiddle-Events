@@ -31,6 +31,6 @@ struct EventsListViewModel {
         }
         
         let urlRequest = URLRequest(url: url)
-        return URLSession.shared.rx.event(request: urlRequest).cacheEvents()
+        return URLSession.shared.rx.event(request: urlRequest)
     }
 }

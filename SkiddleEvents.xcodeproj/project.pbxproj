@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		06352A6D210DF4A60070DB39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06352A6C210DF4A60070DB39 /* AppDelegate.swift */; };
-		06352A6F210DF4A60070DB39 /* EventsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06352A6E210DF4A60070DB39 /* EventsListTableViewController.swift */; };
+		06352A6F210DF4A60070DB39 /* EventsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06352A6E210DF4A60070DB39 /* EventsListViewController.swift */; };
 		06352A72210DF4A60070DB39 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06352A70210DF4A60070DB39 /* Main.storyboard */; };
 		06352A74210DF4B20070DB39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06352A73210DF4B20070DB39 /* Assets.xcassets */; };
 		06352A77210DF4B20070DB39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06352A75210DF4B20070DB39 /* LaunchScreen.storyboard */; };
@@ -33,7 +33,7 @@
 /* Begin PBXFileReference section */
 		06352A69210DF4A60070DB39 /* SkiddleEvents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SkiddleEvents.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06352A6C210DF4A60070DB39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		06352A6E210DF4A60070DB39 /* EventsListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsListTableViewController.swift; sourceTree = "<group>"; };
+		06352A6E210DF4A60070DB39 /* EventsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsListViewController.swift; sourceTree = "<group>"; };
 		06352A71210DF4A60070DB39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		06352A73210DF4B20070DB39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		06352A76210DF4B20070DB39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -111,7 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				06D1AD60210EB73F00E84B4F /* EventsListViewModel.swift */,
-				06352A6E210DF4A60070DB39 /* EventsListTableViewController.swift */,
+				06352A6E210DF4A60070DB39 /* EventsListViewController.swift */,
 				06D1AD66210EBDA900E84B4F /* DisplayEventViewModel.swift */,
 				06352A83210DFDD10070DB39 /* DisplayEventViewController.swift */,
 			);
@@ -341,7 +341,7 @@
 				06352A8B210E05710070DB39 /* Artist.swift in Sources */,
 				06D1AD74210F579000E84B4F /* EventListViewCell.swift in Sources */,
 				06D1AD6B210EBEA300E84B4F /* SceneTransitionType.swift in Sources */,
-				06352A6F210DF4A60070DB39 /* EventsListTableViewController.swift in Sources */,
+				06352A6F210DF4A60070DB39 /* EventsListViewController.swift in Sources */,
 				06D1AD76210FF06E00E84B4F /* URLSession+Rx.swift in Sources */,
 				06352A6D210DF4A60070DB39 /* AppDelegate.swift in Sources */,
 				06352A89210E055D0070DB39 /* Event.swift in Sources */,

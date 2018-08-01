@@ -15,7 +15,7 @@ extension Scene {
         switch self {
         case .events(let viewModel):
             let nc = storyboard.instantiateViewController(withIdentifier: "eventsList") as! UINavigationController
-            var tvc = nc.viewControllers.first as! EventsListTableViewController
+            var tvc = nc.viewControllers.first as! EventsListViewController
             tvc.bindViewModel(to: viewModel)
             return nc
         case .displayEvents(let viewModel):

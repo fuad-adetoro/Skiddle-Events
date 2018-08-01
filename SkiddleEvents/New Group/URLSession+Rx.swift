@@ -11,7 +11,6 @@ import RxSwift
 import SwiftyJSON
 
 fileprivate var internalCache = [String: Data]()
-fileprivate var eventsInternalCache = [String: Event]()
 
 public enum RxURLSessionError: Error {
     case unknown
@@ -86,27 +85,3 @@ extension ObservableType where E == (HTTPURLResponse, Data) {
         })
     }
 }
-
-extension ObservableType where E == ([Event]) {
-    func cacheEvents() -> Observable<E> {
-        return self.do(onNext: { (events) in
-            print("internalCache: \(internalCache[events[0].id])")
-            
-            for event in events {
-                print("Adding: \(event.id) to cache")
-                eventsInternalCache[event.id] = event
-            }
-            
-            print("Internal Cache: \(internalCache)")
-        })
-    }
-}
-
-/*extension ObservableType where E == (HTTPURLResponse, Event) {
-    func cache() -> Observable<E> {
-        return self.do(onNext: { (response, event) in
-            internalCache[event.id] = event
-            }
-        })
-    }
-}*/

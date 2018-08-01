@@ -15,6 +15,8 @@ import RxCoreLocation
 
 class EventsListViewController: UIViewController, BindableType {
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var noLocationLabel: UILabel!
     
     var viewModel: EventsListViewModel!
     
@@ -42,6 +44,9 @@ class EventsListViewController: UIViewController, BindableType {
     func bindViewModel() {
         viewModel.data.skip(1).drive(onNext: { (events) in
             self.events = events
+            
+            self.activityIndicator.stopAnimating()
+            
             self.collectionView.reloadData()
         }).disposed(by: self.rx.disposeBag)
         
@@ -55,18 +60,6 @@ class EventsListViewController: UIViewController, BindableType {
             flowLayout.scrollDirection = .vertical
             flowLayout.minimumLineSpacing = 6
         }
-    }
-    
-    func configureLocationManager() {
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
-        
-        locationManager.rx.didUpdateLocations.take(1).subscribe(onNext:  { (location) in
-            let locationCoordinate = location.locations[0].coordinate
-            let coordinate = Coordinate(longitude: locationCoordinate.longitude, latitude: locationCoordinate.latitude)
-            
-            self.skiddleURL.value = "https://www.skiddle.com/api/v1/events/search/?api_key=\(apiKey)&longitude=\(coordinate.longitude)&latitude=\(coordinate.latitude)&radius=50&limit=50"
-        }).disposed(by: self.rx.disposeBag)
     }
 }
 
@@ -89,6 +82,41 @@ extension EventsListViewController: UICollectionViewDataSource, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.view.frame.width, height: 141)
+    }
+}
+
+//Mark: RxCoreLocation extension
+extension EventsListViewController {
+    func configureLocationManager() {
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        
+        didUpdateLocation()
+    locationManager.rx.didChangeAuthorization.observeOn(MainScheduler.instance).subscribe(onNext: { (manager, status) in
+            switch status {
+            case .denied, .notDetermined, .restricted:
+                if self.events.count == 0 {
+                    self.activityIndicator.stopAnimating()
+                    self.noLocationLabel.isHidden = false
+                }
+            default:
+                self.noLocationLabel.isHidden = true
+                
+                if self.events.count == 0 {
+                    self.activityIndicator.startAnimating()
+                    self.didUpdateLocation()
+                }
+            }
+        }).disposed(by: self.rx.disposeBag)
+    }
+    
+    func didUpdateLocation() {
+        locationManager.rx.didUpdateLocations.take(1).subscribe(onNext:  { (location) in
+            let locationCoordinate = location.locations[0].coordinate
+            let coordinate = Coordinate(longitude: locationCoordinate.longitude, latitude: locationCoordinate.latitude)
+                        
+            self.skiddleURL.value = "https://www.skiddle.com/api/v1/events/search/?api_key=\(apiKey)&longitude=\(coordinate.longitude)&latitude=\(coordinate.latitude)&radius=50&limit=50"
+        }).disposed(by: self.rx.disposeBag)
     }
 }
 

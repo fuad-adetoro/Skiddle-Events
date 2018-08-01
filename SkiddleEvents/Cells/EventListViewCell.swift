@@ -18,7 +18,6 @@ class EventListViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
     
     override func prepareForReuse() {
@@ -32,8 +31,7 @@ class EventListViewCell: UICollectionViewCell {
     }
     
     func configure(event: Event) {
-        let title = event.title
-        self.titleLabel.text = "\(title)"
+        self.titleLabel.text = event.title
         
         eventImageView.kf.setImage(with: URL(string: event.largeImageURL)!)
         

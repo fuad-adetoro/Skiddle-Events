@@ -3,7 +3,7 @@
 <p>This application gathers events using the Skiddle Web API: <a href="https://github.com/Skiddle/web-api" target="_blank">SkiddleWebAPI</a>.</p>
 
 <h3>RxCoreLocation</h3>
-<p>Before we can get events from the API I needed to know the users current location. I did this by subscribing RxCoreLocation's didUpdateLocation observable. <p>
+<p>Before we can get events from the API I needed to know the users current location. I did this by subscribing to RxCoreLocation's didUpdateLocation observable. <p>
 <p>If the user hasn't granted their location no events will be emitted and an error message will appear.</p>
 
 <h3>RxGesture</h3>

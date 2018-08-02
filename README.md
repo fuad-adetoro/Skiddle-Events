@@ -1,6 +1,6 @@
 <h1>Skiddle Events</h1>
 
-<p>This application gathers events using the SkiddleAPI.</p>
+<p>This application gathers events using the Skiddle Web API: <a href="https://github.com/Skiddle/web-api" target="_blank">SkiddleWebAPI</a>.</p>
 
 <h3>RxCoreLocation</h3>
 <p>Before we can get events from the API I needed to know the users current location. I did this by subscribing RxCoreLocation's didUpdateLocation observable. <p>

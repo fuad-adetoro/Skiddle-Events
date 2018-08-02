@@ -10,7 +10,7 @@
 <p>In this app I use a coordinator to pass viewModels to different viewControllers. I used RxGesture to subscribe to a tap of a UICollectionViewCell's contentView, I also used a throttle to limit the amount of values emitted.</p>
 
 <h3>URLSession Reactive Extension</h3>
-<p>I extended the URLSession to revolve around this app. e.g. call to a certain URLSession function to return array of data entities.</p>
+<p>I extended the URLSession to revolve around this app. e.g. call to a certain URLSession function returns an array of data entities.</p>
 
 <h4>Foundations and frameworks used</h4>
 <p>SwiftyJSON, RxAlamoFire, URLSession(Custom Rx Extension), Kingfisher, RxSwift, RxCocoa, RxGesture, RxCoreLocation, NSObject_Rx, </p>

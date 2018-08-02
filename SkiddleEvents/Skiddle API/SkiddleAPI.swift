@@ -16,20 +16,12 @@ public let apiKey = "4787266f998deabb86c710474f41cc20"
 
 typealias Coordinate = (longitude: Double, latitude: Double)
 
-enum SkiddleAPIError: Error {
-    case eventNotFound
-    case serverFailure
-    case invalidKey
-}
-
 protocol SkiddleAPIType {
     func events(from json: JSON) -> [Event]
 }
 
 class SkiddleAPI: SkiddleAPIType {
     public static let shared = SkiddleAPI()
-    
-    let disposeBag = DisposeBag()
     
     func events(from json: JSON) -> [Event] {
         var events: [Event] = []

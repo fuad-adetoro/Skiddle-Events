@@ -18,15 +18,15 @@
 		06352A8B210E05710070DB39 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06352A8A210E05710070DB39 /* Artist.swift */; };
 		06D1AD5F210E4DBD00E84B4F /* string+decodeHTMLString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D1AD5E210E4DBD00E84B4F /* string+decodeHTMLString.swift */; };
 		06D1AD61210EB73F00E84B4F /* EventsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D1AD60210EB73F00E84B4F /* EventsListViewModel.swift */; };
-		06D1AD65210EBD7C00E84B4F /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D1AD64210EBD7C00E84B4F /* Scene.swift */; };
 		06D1AD67210EBDA900E84B4F /* DisplayEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D1AD66210EBDA900E84B4F /* DisplayEventViewModel.swift */; };
-		06D1AD69210EBDE800E84B4F /* SceneCoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D1AD68210EBDE800E84B4F /* SceneCoordinatorType.swift */; };
-		06D1AD6B210EBEA300E84B4F /* SceneTransitionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D1AD6A210EBEA300E84B4F /* SceneTransitionType.swift */; };
-		06D1AD6D210EBEF800E84B4F /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D1AD6C210EBEF800E84B4F /* SceneCoordinator.swift */; };
-		06D1AD6F210EBF8900E84B4F /* Scene+viewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D1AD6E210EBF8900E84B4F /* Scene+viewController.swift */; };
 		06D1AD71210EC53500E84B4F /* BindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D1AD70210EC53500E84B4F /* BindableType.swift */; };
 		06D1AD74210F579000E84B4F /* EventListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D1AD73210F579000E84B4F /* EventListViewCell.swift */; };
 		06D1AD76210FF06E00E84B4F /* URLSession+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D1AD75210FF06E00E84B4F /* URLSession+Rx.swift */; };
+		06D1AD7D2112685F00E84B4F /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D1AD782112685B00E84B4F /* Scene.swift */; };
+		06D1AD7E2112685F00E84B4F /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D1AD792112685C00E84B4F /* SceneCoordinator.swift */; };
+		06D1AD7F2112685F00E84B4F /* Scene+viewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D1AD7A2112685D00E84B4F /* Scene+viewController.swift */; };
+		06D1AD802112685F00E84B4F /* SceneCoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D1AD7B2112685E00E84B4F /* SceneCoordinatorType.swift */; };
+		06D1AD812112685F00E84B4F /* SceneTransitionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D1AD7C2112685F00E84B4F /* SceneTransitionType.swift */; };
 		4379948B7074B579B59065C9 /* Pods_SkiddleEvents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D3D38AA73BFB5154DF50EA5 /* Pods_SkiddleEvents.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,15 +44,15 @@
 		06352A8A210E05710070DB39 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 		06D1AD5E210E4DBD00E84B4F /* string+decodeHTMLString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "string+decodeHTMLString.swift"; sourceTree = "<group>"; };
 		06D1AD60210EB73F00E84B4F /* EventsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsListViewModel.swift; sourceTree = "<group>"; };
-		06D1AD64210EBD7C00E84B4F /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		06D1AD66210EBDA900E84B4F /* DisplayEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayEventViewModel.swift; sourceTree = "<group>"; };
-		06D1AD68210EBDE800E84B4F /* SceneCoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinatorType.swift; sourceTree = "<group>"; };
-		06D1AD6A210EBEA300E84B4F /* SceneTransitionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneTransitionType.swift; sourceTree = "<group>"; };
-		06D1AD6C210EBEF800E84B4F /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
-		06D1AD6E210EBF8900E84B4F /* Scene+viewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Scene+viewController.swift"; sourceTree = "<group>"; };
 		06D1AD70210EC53500E84B4F /* BindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindableType.swift; sourceTree = "<group>"; };
 		06D1AD73210F579000E84B4F /* EventListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewCell.swift; sourceTree = "<group>"; };
 		06D1AD75210FF06E00E84B4F /* URLSession+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Rx.swift"; sourceTree = "<group>"; };
+		06D1AD782112685B00E84B4F /* Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
+		06D1AD792112685C00E84B4F /* SceneCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
+		06D1AD7A2112685D00E84B4F /* Scene+viewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Scene+viewController.swift"; sourceTree = "<group>"; };
+		06D1AD7B2112685E00E84B4F /* SceneCoordinatorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneCoordinatorType.swift; sourceTree = "<group>"; };
+		06D1AD7C2112685F00E84B4F /* SceneTransitionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneTransitionType.swift; sourceTree = "<group>"; };
 		1BB95577262205F7DC7E788C /* Pods-SkiddleEvents.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SkiddleEvents.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SkiddleEvents/Pods-SkiddleEvents.debug.xcconfig"; sourceTree = "<group>"; };
 		4D3D38AA73BFB5154DF50EA5 /* Pods_SkiddleEvents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SkiddleEvents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65053EED63561C70075F2E2A /* Pods-SkiddleEvents.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SkiddleEvents.release.xcconfig"; path = "Pods/Target Support Files/Pods-SkiddleEvents/Pods-SkiddleEvents.release.xcconfig"; sourceTree = "<group>"; };
@@ -94,8 +94,8 @@
 				06352A6C210DF4A60070DB39 /* AppDelegate.swift */,
 				06D1AD5D210E4D9300E84B4F /* Extensions */,
 				06352A85210DFE420070DB39 /* Skiddle API */,
-				06352A82210DFD0C0070DB39 /* Scenes */,
 				06D1AD72210EC54300E84B4F /* Data Entities */,
+				06D1AD772112684700E84B4F /* Scene */,
 				06352A80210DFCF20070DB39 /* Model */,
 				06352A7F210DFCED0070DB39 /* Cells */,
 				06352A7E210DFCD90070DB39 /* Controller */,
@@ -134,18 +134,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		06352A82210DFD0C0070DB39 /* Scenes */ = {
-			isa = PBXGroup;
-			children = (
-				06D1AD64210EBD7C00E84B4F /* Scene.swift */,
-				06D1AD68210EBDE800E84B4F /* SceneCoordinatorType.swift */,
-				06D1AD6C210EBEF800E84B4F /* SceneCoordinator.swift */,
-				06D1AD6E210EBF8900E84B4F /* Scene+viewController.swift */,
-				06D1AD6A210EBEA300E84B4F /* SceneTransitionType.swift */,
-			);
-			path = Scenes;
-			sourceTree = "<group>";
-		};
 		06352A85210DFE420070DB39 /* Skiddle API */ = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +159,18 @@
 				06352A8A210E05710070DB39 /* Artist.swift */,
 			);
 			path = "Data Entities";
+			sourceTree = "<group>";
+		};
+		06D1AD772112684700E84B4F /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				06D1AD782112685B00E84B4F /* Scene.swift */,
+				06D1AD7A2112685D00E84B4F /* Scene+viewController.swift */,
+				06D1AD792112685C00E84B4F /* SceneCoordinator.swift */,
+				06D1AD7B2112685E00E84B4F /* SceneCoordinatorType.swift */,
+				06D1AD7C2112685F00E84B4F /* SceneTransitionType.swift */,
+			);
+			path = Scene;
 			sourceTree = "<group>";
 		};
 		6117BD4951E982F2C9E0AD80 /* Pods */ = {
@@ -277,6 +277,7 @@
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCoreLocation/RxCoreLocation.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
+				"${BUILT_PRODUCTS_DIR}/RxGesture/RxGesture.framework",
 				"${BUILT_PRODUCTS_DIR}/RxRealm/RxRealm.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -294,6 +295,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCoreLocation.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxGesture.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRealm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -332,15 +334,15 @@
 				06352A84210DFDD10070DB39 /* DisplayEventViewController.swift in Sources */,
 				06D1AD61210EB73F00E84B4F /* EventsListViewModel.swift in Sources */,
 				06D1AD67210EBDA900E84B4F /* DisplayEventViewModel.swift in Sources */,
-				06D1AD65210EBD7C00E84B4F /* Scene.swift in Sources */,
+				06D1AD7D2112685F00E84B4F /* Scene.swift in Sources */,
+				06D1AD7E2112685F00E84B4F /* SceneCoordinator.swift in Sources */,
+				06D1AD7F2112685F00E84B4F /* Scene+viewController.swift in Sources */,
 				06D1AD5F210E4DBD00E84B4F /* string+decodeHTMLString.swift in Sources */,
-				06D1AD6D210EBEF800E84B4F /* SceneCoordinator.swift in Sources */,
-				06D1AD6F210EBF8900E84B4F /* Scene+viewController.swift in Sources */,
-				06D1AD69210EBDE800E84B4F /* SceneCoordinatorType.swift in Sources */,
 				06352A87210E04EF0070DB39 /* SkiddleAPI.swift in Sources */,
+				06D1AD802112685F00E84B4F /* SceneCoordinatorType.swift in Sources */,
+				06D1AD812112685F00E84B4F /* SceneTransitionType.swift in Sources */,
 				06352A8B210E05710070DB39 /* Artist.swift in Sources */,
 				06D1AD74210F579000E84B4F /* EventListViewCell.swift in Sources */,
-				06D1AD6B210EBEA300E84B4F /* SceneTransitionType.swift in Sources */,
 				06352A6F210DF4A60070DB39 /* EventsListViewController.swift in Sources */,
 				06D1AD76210FF06E00E84B4F /* URLSession+Rx.swift in Sources */,
 				06352A6D210DF4A60070DB39 /* AppDelegate.swift in Sources */,

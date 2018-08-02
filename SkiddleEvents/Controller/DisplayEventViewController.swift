@@ -8,6 +8,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class DisplayEventViewController: UIViewController, BindableType {
     var viewModel: DisplayEventViewModel!
@@ -15,9 +16,42 @@ class DisplayEventViewController: UIViewController, BindableType {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        updatingNavigationBarSettings()
     }
 
     func bindViewModel() {
         //
+    }
+    
+    func updatingNavigationBarSettings() {
+        self.navigationItem.hidesBackButton = true
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .done, target: self, action: #selector(self.backButtonClicked))
+    }
+    
+    @objc func backButtonClicked() {
+        viewModel.sceneCoordinator.pop()
+    }
+}
+
+extension DisplayEventViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "displayEventImageCell", for: indexPath)
+        
+        let eventImageView = cell.viewWithTag(30) as! UIImageView
+        eventImageView.kf.setImage(with: viewModel.event.getImageURL())
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: self.view.frame.width, height: self.view.frame.height/2)
     }
 }

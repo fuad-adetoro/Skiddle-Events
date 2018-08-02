@@ -26,4 +26,7 @@ target 'SkiddleEvents' do
 
   # Image handling
   pod 'Kingfisher'
+
+  # Gesture Handling 
+  pod 'RxGesture'
 end

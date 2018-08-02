@@ -12,6 +12,7 @@ import RxCocoa
 import NSObject_Rx
 import CoreLocation
 import RxCoreLocation
+import RxGesture
 
 class EventsListViewController: UIViewController, BindableType {
     @IBOutlet weak var collectionView: UICollectionView!
@@ -61,6 +62,16 @@ class EventsListViewController: UIViewController, BindableType {
             flowLayout.minimumLineSpacing = 6
         }
     }
+    
+    func openEvent(gestureRecognizer: UITapGestureRecognizer) {
+        if let indexPath = self.collectionView.indexPathForItem(at: gestureRecognizer.location(in: self.collectionView)) {
+            let newEvent = self.events[indexPath.row]
+            
+            let displayEventViewModel = DisplayEventViewModel(sceneCoordinator: viewModel.sceneCoordinator, event: newEvent)
+            
+            viewModel.sceneCoordinator.transition(to: Scene.displayEvents(displayEventViewModel), type: .push)
+        }
+    }
 }
 
 extension EventsListViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -75,7 +86,11 @@ extension EventsListViewController: UICollectionViewDataSource, UICollectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let eventListViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: eventListViewCellId, for: indexPath) as! EventListViewCell
         
-        eventListViewCell.configure(event: self.events[indexPath.row])
+        let event = self.events[indexPath.row]
+        eventListViewCell.configure(event: event)
+         eventListViewCell.contentView.rx.tapGesture().when(UIGestureRecognizerState.recognized).throttle(0.5, scheduler: MainScheduler.instance).subscribe(onNext: { gestureRecognizer in
+            self.openEvent(gestureRecognizer: gestureRecognizer)
+        }).disposed(by: self.rx.disposeBag)
         
         return eventListViewCell
     }
@@ -114,7 +129,7 @@ extension EventsListViewController {
         locationManager.rx.didUpdateLocations.take(1).subscribe(onNext:  { (location) in
             let locationCoordinate = location.locations[0].coordinate
             let coordinate = Coordinate(longitude: locationCoordinate.longitude, latitude: locationCoordinate.latitude)
-                        
+            
             self.skiddleURL.value = "https://www.skiddle.com/api/v1/events/search/?api_key=\(apiKey)&longitude=\(coordinate.longitude)&latitude=\(coordinate.latitude)&radius=50&limit=50"
         }).disposed(by: self.rx.disposeBag)
     }

@@ -11,5 +11,11 @@ import RxSwift
 import Action
 
 struct DisplayEventViewModel {
+    let sceneCoordinator: SceneCoordinatorType
+    let event: Event
     
+    init(sceneCoordinator: SceneCoordinatorType, event: Event) {
+        self.sceneCoordinator = sceneCoordinator
+        self.event = event
+    }
 }

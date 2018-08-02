@@ -22,7 +22,11 @@ enum SkiddleAPIError: Error {
     case invalidKey
 }
 
-class SkiddleAPI {
+protocol SkiddleAPIType {
+    func events(from json: JSON) -> [Event]
+}
+
+class SkiddleAPI: SkiddleAPIType {
     public static let shared = SkiddleAPI()
     
     let disposeBag = DisposeBag()
@@ -149,40 +153,3 @@ class SkiddleAPI {
         return artists
     }
 }
-
-/*extension ObservableType where E == (HTTPURLResponse, Data) {
-    func cache() -> Observable<E> {
-        return self.do(onNext: { (response, data) in
-            if let url = response.url?.absoluteString, 200 ..< 300 ~= response.statusCode {
-                internalCache[url] = data
-            }
-        })
-    }
-}*/
-
-
-/// COMMENT
-
-/*
- func subscribeForEvents(url: URL, completion: @escaping fetchEventsCompletion) {
- let request = requestEvent(with: url).retry(3).subscribe(onNext: { (response, value) in
- if 200 ..< 300 ~= response.statusCode {
- let json = JSON(value)
- let resultsJSON = json["results"]
- 
- let fetchedEvents = self.events(from: resultsJSON)
- 
- completion(fetchedEvents, nil)
- } else if response.statusCode == 401 {
- completion([], SkiddleAPIError.invalidKey)
- } else if 400 ..< 500 ~= response.statusCode {
- completion([], SkiddleAPIError.eventNotFound)
- } else {
- completion([], SkiddleAPIError.serverFailure)
- }
- }, onError: { (error) in
- completion([], error)
- })
- 
- request.disposed(by: disposeBag)
- }*/

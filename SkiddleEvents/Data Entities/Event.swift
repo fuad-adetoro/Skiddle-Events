@@ -117,4 +117,17 @@ extension Event {
             return "\(dateString) - \(endDateString)"
         }
     }
+    
+    func getImageURL() -> URL {
+        var imageURL = self.largeImageURL
+                
+        if !imageURL.contains("_400.jpg") {
+            if imageURL.contains("cloudfront") || imageURL.contains("rackcdn.com") {
+                imageURL = imageURL.replacingOccurrences(of: ".jpg", with: "_400.jpg")
+            }
+        }
+        
+        return URL(string: imageURL)!
+        
+    }
 }

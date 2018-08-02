@@ -13,16 +13,15 @@ extension Scene {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         switch self {
-        case .events(let viewModel):
+        case .events(let eventsListViewModel):
             let nc = storyboard.instantiateViewController(withIdentifier: "eventsList") as! UINavigationController
-            var tvc = nc.viewControllers.first as! EventsListViewController
-            tvc.bindViewModel(to: viewModel)
+            var vc = nc.viewControllers.first as! EventsListViewController
+            vc.bindViewModel(to: eventsListViewModel)
             return nc
-        case .displayEvents(let viewModel):
-            let nc = storyboard.instantiateViewController(withIdentifier: "displayEvents") as! UINavigationController
-            var vc = nc.viewControllers.first as! DisplayEventViewController
-            vc.bindViewModel(to: viewModel)
-            return nc
+        case .displayEvents(let displayEventViewModel):
+            var vc = storyboard.instantiateViewController(withIdentifier: "displayEvents") as! DisplayEventViewController
+            vc.bindViewModel(to: displayEventViewModel)
+            return vc
         }
     }
 }

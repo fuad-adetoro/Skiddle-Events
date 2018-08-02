@@ -10,7 +10,7 @@
 <p>I extended the <b>URLSession</b> to revolve around this app. e.g. call to a certain <b>URLSession</b> function returns an array of data entities.</p>
 
 <h3>RxCocoa</h3>
-<p>I used the reactive extension to <b>UICollectionView</b> to display items and to notify me when a user selects an item.</p>
+<p>I used the reactive extension of <b>UICollectionView</b> to display items and to notify me when a user selects an item.</p>
 
 <h3>Foundations and frameworks used</h3>
 <p>

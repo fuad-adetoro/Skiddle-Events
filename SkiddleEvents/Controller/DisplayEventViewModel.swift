@@ -8,7 +8,6 @@
 
 import Foundation
 import RxSwift
-import Action
 
 struct DisplayEventViewModel {
     let sceneCoordinator: SceneCoordinatorType

@@ -12,9 +12,8 @@ import RxCocoa
 import NSObject_Rx
 import CoreLocation
 import RxCoreLocation
-import RxGesture
 
-class EventsListViewController: UIViewController, BindableType {
+class EventsListViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var noLocationLabel: UILabel!
@@ -42,20 +41,6 @@ class EventsListViewController: UIViewController, BindableType {
         configureCollectionView()
     }
     
-    func bindViewModel() {
-        viewModel.data.skip(1).drive(onNext: { (events) in
-            self.events = events
-            
-            self.activityIndicator.stopAnimating()
-            
-            self.collectionView.reloadData()
-        }).disposed(by: self.rx.disposeBag)
-        
-        skiddleURL.asObservable().bind(to: viewModel.searchText).disposed(by: self.rx.disposeBag)
-        
-        viewModel.data.map { "\($0.count) Events" }.drive(navigationItem.rx.title).disposed(by: self.rx.disposeBag)
-    }
-    
     func configureCollectionView() {
         if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.scrollDirection = .vertical
@@ -63,40 +48,63 @@ class EventsListViewController: UIViewController, BindableType {
         }
     }
     
-    func openEvent(gestureRecognizer: UITapGestureRecognizer) {
-        if let indexPath = self.collectionView.indexPathForItem(at: gestureRecognizer.location(in: self.collectionView)) {
-            let newEvent = self.events[indexPath.row]
+    func openEvent(event: Event) {
+        let displayEventViewModel = DisplayEventViewModel(sceneCoordinator: viewModel.sceneCoordinator, event: event)
             
-            let displayEventViewModel = DisplayEventViewModel(sceneCoordinator: viewModel.sceneCoordinator, event: newEvent)
-            
-            viewModel.sceneCoordinator.transition(to: Scene.displayEvents(displayEventViewModel), type: .push)
-        }
+        viewModel.sceneCoordinator.transition(to: Scene.displayEvents(displayEventViewModel), type: .push)
     }
 }
 
-extension EventsListViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+extension EventsListViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        print("Size")
+        return CGSize(width: self.view.frame.width, height: 141)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return events.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let eventListViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: eventListViewCellId, for: indexPath) as! EventListViewCell
+}
+
+//Mark: BindableType Extension
+extension EventsListViewController: BindableType {
+    func bindViewModel() {
+        bindDataToCollectionView()
         
-        let event = self.events[indexPath.row]
-        eventListViewCell.configure(event: event)
-         eventListViewCell.contentView.rx.tapGesture().when(UIGestureRecognizerState.recognized).throttle(0.5, scheduler: MainScheduler.instance).subscribe(onNext: { gestureRecognizer in
-            self.openEvent(gestureRecognizer: gestureRecognizer)
+        skiddleURL.asObservable().bind(to: viewModel.searchText).disposed(by: self.rx.disposeBag)
+        
+        viewModel.data.map { "\($0.count) Events" }.drive(navigationItem.rx.title).disposed(by: self.rx.disposeBag)
+        
+        collectionViewItemSelected()
+    }
+    
+    func bindDataToCollectionView() {
+        let dataObservable = viewModel.data.skip(1).asObservable()
+        
+        dataObservable.bind(to: collectionView.rx.items(cellIdentifier: eventListViewCellId, cellType: EventListViewCell.self)) { _, event, cell in
+            
+            cell.configure(event: event)
+            
+            }.disposed(by: self.rx.disposeBag)
+        
+        dataObservable.subscribe(onNext: { [weak self] events in
+            guard let strongSelf = self else {
+                return
+            }
+            
+            strongSelf.events = events
+            
+            strongSelf.activityIndicator.stopAnimating()
         }).disposed(by: self.rx.disposeBag)
         
-        return eventListViewCell
+        collectionView.rx.setDelegate(self).disposed(by: self.rx.disposeBag)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.view.frame.width, height: 141)
+    func collectionViewItemSelected() {
+        collectionView.rx.itemSelected.asDriver().debounce(0.3).asObservable().subscribe(onNext: { [weak self] indexPath in
+            guard let strongSelf = self else {
+                return
+            }
+            
+            let event = strongSelf.events[indexPath.row]
+            strongSelf.openEvent(event: event)
+        }).disposed(by: self.rx.disposeBag)
     }
 }
 

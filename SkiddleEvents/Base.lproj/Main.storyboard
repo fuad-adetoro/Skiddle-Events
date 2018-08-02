@@ -197,10 +197,6 @@
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
-                                        <connections>
-                                            <outlet property="dataSource" destination="V7d-TM-K0Z" id="wG3-nv-5hG"/>
-                                            <outlet property="delegate" destination="V7d-TM-K0Z" id="84y-U7-2u6"/>
-                                        </connections>
                                     </collectionView>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zje-xv-wNy">
                                         <rect key="frame" x="19" y="284" width="335" height="122"/>

@@ -13,4 +13,4 @@
 <p>I extended the URLSession to revolve around this app. e.g. call to a certain URLSession function returns an array of data entities.</p>
 
 <h4>Foundations and frameworks used</h4>
-<p>SwiftyJSON, RxAlamoFire, URLSession(Custom Rx Extension), Kingfisher, RxSwift, RxCocoa, RxGesture, RxCoreLocation, NSObject_Rx, </p>
+<p>SwiftyJSON, RxAlamoFire, URLSession(Custom Rx Extension), Kingfisher, RxSwift, RxCocoa, RxGesture, RxCoreLocation, NSObject_Rx </p>

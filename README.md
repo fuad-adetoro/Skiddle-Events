@@ -7,7 +7,7 @@
 <p>If the user hasn't granted their location no events will be emitted and an error message will appear.</p>
 
 <h3>URLSession Reactive Extension</h3>
-<p>I extended the <b>URLSession</b> to revolve around this app. e.g. call to a certain <b>URLSession</b> function returns an array of an object.</p>
+<p>I extended the <b>URLSession</b> to revolve around this app, e.g. call to a certain <b>URLSession</b> function returns an array of an object.</p>
 
 <h3>RxCocoa</h3>
 <p>I used the reactive extension of <b>UICollectionView</b> to display items and to notify me when a user selects an item.</p>

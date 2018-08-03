@@ -6,13 +6,13 @@
 <p>Before we can get events from the API I needed to know the users current location. I did this by subscribing to <b>RxCoreLocation</b>'s <b>didUpdateLocation</b> observable. <p>
 <p>If the user hasn't granted their location no events will be emitted and an error message will appear.</p>
 
-<h3>URLSession Reactive Extension</h3>
-<p>I extended the <b>URLSession</b> to revolve around this app, e.g. call to a certain <b>URLSession</b> function returns an array of an object.</p>
+<h3>Custom Reactive URLSession functions</h3>
+<p>I extended the <b>URLSession</b> to revolve around this app, e.g. a call to a custom <b>URLSession</b> function will return an array of an object (such as [JSON] or [Event]).</p>
 
 <h3>RxCocoa</h3>
 <p>I used the reactive extension of <b>UICollectionView</b> to display items and to notify me when a user selects an item.</p>
 
-<h3>Foundations and frameworks used</h3>
+<h3>Frameworks used</h3>
 <p>
-&bull; SwiftyJSON <br> &bull; RxAlamoFire <br> &bull; URLSession(Custom Reactive Extension) <br> &bull; Kingfisher <br> &bull; RxSwift <br> &bull; RxCocoa <br> &bull; RxCoreLocation <br> &bull; NSObject_Rx
+&bull; SwiftyJSON <br> &bull; RxAlamoFire <br> &bull; Kingfisher <br> &bull; RxSwift <br> &bull; RxCocoa <br> &bull; RxCoreLocation <br> &bull; NSObject_Rx
 </p>

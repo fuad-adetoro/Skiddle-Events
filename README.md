@@ -14,5 +14,5 @@
 
 <h3>Foundations and frameworks used</h3>
 <p>
-&bull; SwiftJSON <br> &bull; RxAlamoFire <br> &bull; URLSession(Custom Reactive Extension) <br> &bull; Kingfisher <br> &bull; RxSwift <br> &bull; RxCocoa <br> &bull; RxCoreLocation <br> &bull; NSObject_Rx
+&bull; SwiftyJSON <br> &bull; RxAlamoFire <br> &bull; URLSession(Custom Reactive Extension) <br> &bull; Kingfisher <br> &bull; RxSwift <br> &bull; RxCocoa <br> &bull; RxCoreLocation <br> &bull; NSObject_Rx
 </p>

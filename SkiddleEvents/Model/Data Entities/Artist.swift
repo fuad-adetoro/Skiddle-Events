@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxDataSources
 
 class Artist {
     @objc dynamic var name: String = ""

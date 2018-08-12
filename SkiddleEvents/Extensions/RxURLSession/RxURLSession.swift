@@ -12,13 +12,6 @@ import SwiftyJSON
 
 fileprivate var internalCache = [String: Data]()
 
-public enum RxURLSessionError: Error {
-    case unknown
-    case invalidResponse(response: URLResponse)
-    case requestFailed(response: HTTPURLResponse, data: Data?)
-    case deserializationFailed
-}
-
 extension Reactive where Base: URLSession {
     func response(request: URLRequest) -> Observable<(HTTPURLResponse, Data)> {
         return Observable.create { observer in
@@ -51,6 +44,10 @@ extension Reactive where Base: URLSession {
         return response(request: request).cache().map { response, data -> Data in
             if 200 ..< 300 ~= response.statusCode {
                 return data
+            } else if response.statusCode == 400 {
+                throw RxURLSessionError.invalidKey
+            } else if 400 ..< 500 ~= response.statusCode {
+                throw RxURLSessionError.eventsNotFound
             } else {
                 throw RxURLSessionError.requestFailed(response: response, data: data)
             }
@@ -59,7 +56,11 @@ extension Reactive where Base: URLSession {
     
     func json(request: URLRequest) -> Observable<JSON> {
         return data(request: request).map { d in
-            return try JSON(data: d)
+            do {
+                return try JSON(data: d)
+            } catch {
+                throw RxURLSessionError.deserializationFailed
+            }
         }
     }
     

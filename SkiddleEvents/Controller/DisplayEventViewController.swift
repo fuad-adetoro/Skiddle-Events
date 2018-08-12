@@ -9,8 +9,12 @@
 
 import UIKit
 import Kingfisher
+import RxSwift
+import RxCocoa
 
 class DisplayEventViewController: UIViewController, BindableType {
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     var viewModel: DisplayEventViewModel!
     
     override func viewDidLoad() {
@@ -23,7 +27,7 @@ class DisplayEventViewController: UIViewController, BindableType {
         //
     }
     
-    func updatingNavigationBarSettings() {
+    fileprivate func updatingNavigationBarSettings() {
         self.navigationItem.hidesBackButton = true
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .done, target: self, action: #selector(self.backButtonClicked))
     }

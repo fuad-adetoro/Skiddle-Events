@@ -11,17 +11,28 @@ import Foundation
 import RxSwift
 import SwiftyJSON
 import RxAlamofire
-
-public let apiKey = "4787266f998deabb86c710474f41cc20"
+import RxCocoa
 
 typealias Coordinate = (longitude: Double, latitude: Double)
 
 protocol SkiddleAPIType {
     func events(from json: JSON) -> [Event]
+    func parseEvents(_ urlString: String) -> Observable<[Event]>
 }
 
 class SkiddleAPI: SkiddleAPIType {
     public static let shared = SkiddleAPI()
+    
+    public let apiKey = BehaviorSubject(value: "4787266f998deabb86c710474f41cc20")
+    
+    func parseEvents(_ urlString: String) -> Observable<[Event]> {
+        guard !urlString.isEmpty, let url = URL(string: urlString) else {
+            return Observable.just([])
+        }
+        
+        let urlRequest = URLRequest(url: url)
+        return URLSession.shared.rx.event(request: urlRequest)
+    }
     
     func events(from json: JSON) -> [Event] {
         var events: [Event] = []

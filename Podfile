@@ -5,17 +5,13 @@ target 'SkiddleEvents' do
   use_frameworks!
 
   # core RxSwift
-  pod 'RxSwift', '~> 4.0'
-  pod 'RxCocoa', '~> 4.0'
-  pod 'RxDataSources', '~> 3.0'
+  pod 'RxSwift'
+  pod 'RxCocoa'
+  pod 'RxDataSources' 
+  pod 'RxReachability'
 
   # Community projects
-  pod 'Action', '~> 3.4'
-  pod 'NSObject+Rx', '~> 4.1'
-
-  # Realm database
-  pod 'RealmSwift', '~> 3.0'
-  pod 'RxRealm', '~> 0.7'
+  pod 'NSObject+Rx'
 
   # Data Handling 
   pod 'RxAlamofire'
@@ -26,7 +22,4 @@ target 'SkiddleEvents' do
 
   # Image handling
   pod 'Kingfisher'
-
-  # Gesture Handling 
-  pod 'RxGesture'
 end

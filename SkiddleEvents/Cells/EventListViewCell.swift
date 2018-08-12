@@ -30,7 +30,7 @@ class EventListViewCell: UICollectionViewCell {
         eventLocationLabel.text = nil
     }
     
-    func configure(event: Event) {
+    func configure(with event: Event) {
         self.titleLabel.text = event.title
         
         eventImageView.kf.setImage(with: URL(string: event.largeImageURL)!)

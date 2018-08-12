@@ -6,7 +6,7 @@
 //  Copyright © 2018 PREE. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum Scene {
     case events(EventsListViewModel)

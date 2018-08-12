@@ -8,12 +8,6 @@
 
 import UIKit
 
-enum ViewModelType {
-    case eventsListViewModel
-    case displayEventViewModel
-}
-
 protocol ViewModel {
     var sceneCoordinator: SceneCoordinatorType { get set }
-    var viewModelType: ViewModelType { get set }
 }

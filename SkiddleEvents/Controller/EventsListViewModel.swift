@@ -12,13 +12,11 @@ import RxCocoa
 
 struct EventsListViewModel: ViewModel {
     var sceneCoordinator: SceneCoordinatorType
-    var viewModelType: ViewModelType
     
     let searchText: Variable<String> = Variable("")
     
     init(sceneCoordinator: SceneCoordinatorType) {
         self.sceneCoordinator = sceneCoordinator
-        self.viewModelType = .eventsListViewModel
     }
     
     lazy var events: Observable<[Event]> = {

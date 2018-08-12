@@ -11,14 +11,11 @@ import RxSwift
 
 struct DisplayEventViewModel: ViewModel {
     var sceneCoordinator: SceneCoordinatorType
-    var viewModelType: ViewModelType
     
     let event: Event
     
     init(sceneCoordinator: SceneCoordinatorType, event: Event) {
         self.sceneCoordinator = sceneCoordinator
         self.event = event
-        
-        self.viewModelType = .displayEventViewModel
     }
 }

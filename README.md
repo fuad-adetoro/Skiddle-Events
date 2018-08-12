@@ -9,8 +9,8 @@
 <h3>Custom Reactive URLSession functions</h3>
 <p>I extended the <b>URLSession</b> to revolve around this app, e.g. a call to a custom <b>URLSession</b> function will return an array of an object (such as [JSON] or [Event]).</p>
 
-<h3>RxCocoa</h3>
-<p>I used the reactive extension of <b>UICollectionView</b> to display items and to notify me when a user selects an item.</p>
+<h3>Custom RxReachability</h3>
+<p>Using SystemConfiguration & RxSwift to observe the users current network availability.</p>
 
 <h3>Frameworks used</h3>
 <p>

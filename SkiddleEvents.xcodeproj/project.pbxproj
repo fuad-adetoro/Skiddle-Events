@@ -16,10 +16,10 @@
 		06352A87210E04EF0070DB39 /* SkiddleAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06352A86210E04EF0070DB39 /* SkiddleAPI.swift */; };
 		06352A89210E055D0070DB39 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06352A88210E055D0070DB39 /* Event.swift */; };
 		06352A8B210E05710070DB39 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06352A8A210E05710070DB39 /* Artist.swift */; };
-		06A06C102114B2EF00571E47 /* RxReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A06C0F2114B2EF00571E47 /* RxReachability.swift */; };
 		06CCE6E7211F875100A1CF4F /* UIViewController+UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CCE6E6211F875100A1CF4F /* UIViewController+UIAlertController.swift */; };
 		06CCE6E9211F893D00A1CF4F /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CCE6E8211F893D00A1CF4F /* ViewModel.swift */; };
 		06CCE6EC211F943E00A1CF4F /* RxURLSessionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CCE6EB211F943E00A1CF4F /* RxURLSessionError.swift */; };
+		06CCE6EF2120E8C500A1CF4F /* RxReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CCE6EE2120E8C500A1CF4F /* RxReachability.swift */; };
 		06D1AD5F210E4DBD00E84B4F /* string+decodeHTMLString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D1AD5E210E4DBD00E84B4F /* string+decodeHTMLString.swift */; };
 		06D1AD61210EB73F00E84B4F /* EventsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D1AD60210EB73F00E84B4F /* EventsListViewModel.swift */; };
 		06D1AD67210EBDA900E84B4F /* DisplayEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D1AD66210EBDA900E84B4F /* DisplayEventViewModel.swift */; };
@@ -46,10 +46,10 @@
 		06352A86210E04EF0070DB39 /* SkiddleAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkiddleAPI.swift; sourceTree = "<group>"; };
 		06352A88210E055D0070DB39 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		06352A8A210E05710070DB39 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
-		06A06C0F2114B2EF00571E47 /* RxReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RxReachability.swift; path = "../New Group/RxReachability.swift"; sourceTree = "<group>"; };
 		06CCE6E6211F875100A1CF4F /* UIViewController+UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+UIAlertController.swift"; sourceTree = "<group>"; };
 		06CCE6E8211F893D00A1CF4F /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		06CCE6EB211F943E00A1CF4F /* RxURLSessionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxURLSessionError.swift; sourceTree = "<group>"; };
+		06CCE6EE2120E8C500A1CF4F /* RxReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxReachability.swift; sourceTree = "<group>"; };
 		06D1AD5E210E4DBD00E84B4F /* string+decodeHTMLString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "string+decodeHTMLString.swift"; sourceTree = "<group>"; };
 		06D1AD60210EB73F00E84B4F /* EventsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsListViewModel.swift; sourceTree = "<group>"; };
 		06D1AD66210EBDA900E84B4F /* DisplayEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayEventViewModel.swift; sourceTree = "<group>"; };
@@ -164,7 +164,7 @@
 		06CCE6ED2120E72700A1CF4F /* RxReachability */ = {
 			isa = PBXGroup;
 			children = (
-				06A06C0F2114B2EF00571E47 /* RxReachability.swift */,
+				06CCE6EE2120E8C500A1CF4F /* RxReachability.swift */,
 			);
 			path = RxReachability;
 			sourceTree = "<group>";
@@ -349,13 +349,13 @@
 			files = (
 				06D1AD71210EC53500E84B4F /* BindableType.swift in Sources */,
 				06352A84210DFDD10070DB39 /* DisplayEventViewController.swift in Sources */,
+				06CCE6EF2120E8C500A1CF4F /* RxReachability.swift in Sources */,
 				06D1AD61210EB73F00E84B4F /* EventsListViewModel.swift in Sources */,
 				06D1AD67210EBDA900E84B4F /* DisplayEventViewModel.swift in Sources */,
 				06D1AD7D2112685F00E84B4F /* Scene.swift in Sources */,
 				06D1AD7E2112685F00E84B4F /* SceneCoordinator.swift in Sources */,
 				06D1AD7F2112685F00E84B4F /* Scene+viewController.swift in Sources */,
 				06D1AD5F210E4DBD00E84B4F /* string+decodeHTMLString.swift in Sources */,
-				06A06C102114B2EF00571E47 /* RxReachability.swift in Sources */,
 				06352A87210E04EF0070DB39 /* SkiddleAPI.swift in Sources */,
 				06CCE6E9211F893D00A1CF4F /* ViewModel.swift in Sources */,
 				06D1AD802112685F00E84B4F /* SceneCoordinatorType.swift in Sources */,

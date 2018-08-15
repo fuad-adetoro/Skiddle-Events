@@ -9,6 +9,7 @@
 import SystemConfiguration
 import Foundation
 import RxSwift
+import RxCocoa
 
 enum Reachability {
     case offline
@@ -32,7 +33,7 @@ class RxReachability {
     
     fileprivate init() {}
     
-    private static var _status = Variable<Reachability>(.unknown)
+    private static var _status = BehaviorRelay<Reachability>(value: .unknown)
     var status: Observable<Reachability> {
         get {
             return RxReachability._status.asObservable().distinctUntilChanged()
@@ -65,7 +66,7 @@ class RxReachability {
             
             SCNetworkReachabilitySetCallback(reachability, { (_, flags, _) in
                 let status = Reachability(reachabilityFlags: flags)
-                RxReachability._status.value = status
+                RxReachability._status.accept(status)
             }, &context)
             
             SCNetworkReachabilityScheduleWithRunLoop(reachability, CFRunLoopGetMain(), CFRunLoopMode.commonModes.rawValue)

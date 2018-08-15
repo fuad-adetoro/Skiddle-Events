@@ -13,7 +13,7 @@ import RxCocoa
 struct EventsListViewModel: ViewModel {
     var sceneCoordinator: SceneCoordinatorType
     
-    let searchText: Variable<String> = Variable("")
+    let searchText = BehaviorRelay<String>(value: "")
     
     init(sceneCoordinator: SceneCoordinatorType) {
         self.sceneCoordinator = sceneCoordinator

@@ -21,9 +21,9 @@ class EventsListViewController: UIViewController {
     
     var viewModel: EventsListViewModel!
     
-    private var events: [Event] = []
+    private let events = BehaviorRelay<[Event]>(value: [])
     
-    private var skiddleURL: Variable<String> = Variable("")
+    private let skiddleURL = BehaviorRelay<String>(value: "")
     
     private let eventListViewCellId = "EventListViewCell"
     
@@ -72,7 +72,7 @@ extension EventsListViewController: BindableType {
     func bindViewModel() {
         _ = RxReachability.shared.startMonitor("skiddle.com")
         
-        let eventsData = viewModel.events.observeOn(MainScheduler.instance)
+        let eventsData = viewModel.events.observeOn(MainScheduler.instance).skip(1)
         let reachabilityStatus = RxReachability.shared.status.skip(1)
         
         var userOnline = false
@@ -101,8 +101,6 @@ extension EventsListViewController: BindableType {
                 
                 if !userOnline {
                     userOnline = true
-                    strongSelf.refreshButton.isHidden = true
-                    strongSelf.refreshButton.isEnabled = false
                     
                     strongSelf.handleData(eventsData)
                 }
@@ -120,19 +118,19 @@ extension EventsListViewController: BindableType {
     
     private func handleData(_ eventsData: Observable<[Event]>) {
         // Converting data to driver to make sure bind doesn't result to a fatal error
-        self.bindDataToCollectionView(eventsData.asDriver(onErrorJustReturn: []).asObservable())
-        
         self.handleEventData(dataObservable: eventsData)
         
-        self.skiddleURL.asObservable().bind(to: self.viewModel.searchText).disposed(by: self.rx.disposeBag)
+        self.bindDataToCollectionView()
         
-        self.viewModel.events.asDriver(onErrorJustReturn: []).map { "\($0.count) Events" }.drive(self.navigationItem.rx.title).disposed(by: self.rx.disposeBag)
+        self.skiddleURL.asObservable().bind(to: self.viewModel.searchText).disposed(by: self.rx.disposeBag)
         
         self.collectionViewItemSelected()
     }
     
-    private func bindDataToCollectionView(_ dataObservable: Observable<[Event]>) {
-        dataObservable.bind(to: collectionView.rx.items(cellIdentifier: eventListViewCellId, cellType: EventListViewCell.self)) { _, event, eventListViewCell in
+    private func bindDataToCollectionView() {
+        self.events.asDriver().map{ "\($0.count) Events" }.drive(self.navigationItem.rx.title).disposed(by: self.rx.disposeBag)
+        
+        events.observeOn(MainScheduler.instance).bind(to: collectionView.rx.items(cellIdentifier: eventListViewCellId, cellType: EventListViewCell.self)) { _, event, eventListViewCell in
             eventListViewCell.configure(with: event)
             }.disposed(by: self.rx.disposeBag)
         
@@ -147,8 +145,11 @@ extension EventsListViewController: BindableType {
                 return
             }
             
-            let event = strongSelf.events[indexPath.row]
-            strongSelf.openEvent(event)
+            strongSelf.events.asObservable().enumerated().map({ (index, eventArr) -> Event in
+                return eventArr[indexPath.row]
+            }).throttle(1, scheduler: MainScheduler.instance).subscribe(onNext: { event in
+                strongSelf.openEvent(event)
+            }).disposed(by: strongSelf.rx.disposeBag)
         }).disposed(by: self.rx.disposeBag)
     }
     
@@ -165,7 +166,8 @@ extension EventsListViewController: BindableType {
                 return
             }
             
-            strongSelf.events = events
+            strongSelf.events.accept(events)
+            
             strongSelf.activityIndicator.stopAnimating()
         }, onError: { [weak self] e in
             guard let strongSelf = self else {
@@ -218,7 +220,8 @@ extension EventsListViewController {
             
             let apiKey = try? SkiddleAPI.shared.apiKey.value()
             
-            strongSelf.skiddleURL.value = "https://www.skiddle.com/api/v1/events/search/?api_key=\(apiKey!)&longitude=\(coordinate.longitude)&latitude=\(coordinate.latitude)&radius=50&limit=50"
+            let eventURL = "https://www.skiddle.com/api/v1/events/search/?api_key=\(apiKey!)&longitude=\(coordinate.longitude)&latitude=\(coordinate.latitude)&radius=50&limit=50"
+            strongSelf.skiddleURL.accept(eventURL)
         }).disposed(by: self.rx.disposeBag)
     }
 }
